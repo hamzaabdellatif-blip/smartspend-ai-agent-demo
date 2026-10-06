@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SmartSpend AI Agent</title>
+<link rel="icon" href="icons/phone-call.svg">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script src="_ds_bundle.js"></script>
+<style>
+body{margin:0;background:var(--ss-gray-100);font-family:var(--ss-font-body);color:var(--ss-ink)}
+[dir="rtl"] body,[dir="rtl"] *{font-family:"IBM Plex Sans Arabic",var(--ss-font-body)}
+a{color:var(--ss-teal-700)}a:hover{color:var(--ss-teal-800)}
+@keyframes aaPing{0%{transform:scale(1);opacity:.6}80%,100%{transform:scale(2.6);opacity:0}}
+.aa-ping{animation:aaPing 1.6s cubic-bezier(0,0,.2,1) infinite}
+@keyframes aaMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes aaMarqueeRtl{from{transform:translateX(0)}to{transform:translateX(50%)}}
+.aa-marquee{animation:aaMarquee 38s linear infinite}.aa-marquee-rtl{animation:aaMarqueeRtl 38s linear infinite}
+@keyframes aaFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.aa-fade{animation:aaFade .45s ease both}
+@keyframes aaToast{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:none}}
+.aa-toast{animation:aaToast .35s cubic-bezier(.2,.8,.2,1) both}
+.aa-row:hover{background:var(--ss-gray-50)}
+.aa-card{transition:transform .15s,box-shadow .15s}.aa-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(16,25,52,.1)}
+.aa-screen{animation:aaFade .35s ease both}
+[dir="rtl"]{--aa-dir:-1}
+html,body{overflow-x:hidden}
+.aa-mob{display:none}
+@media (max-width:719px){.aa-desk{display:none!important}.aa-mob{display:flex!important}}
+</style>
+</head><body><div id="root"></div>
+<script src="logo.js"></script>
+<script src="app.js"></script>
+</body></html>

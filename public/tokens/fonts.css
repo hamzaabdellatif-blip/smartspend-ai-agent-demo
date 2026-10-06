@@ -1,0 +1,4 @@
+/* Webfonts. Montserrat / Inter / Arimo are the real faces from the Figma file (Google Fonts).
+   BoutrosART (display / page titles) is a commercial face with no file in the source —
+   substituted with Montserrat Alternates 500 until the real files are supplied. */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Montserrat+Alternates:wght@500;600&family=Inter:wght@400;500;600;700&family=Arimo:wght@400&family=Mona+Sans:wght@400;500;600&family=Roboto+Mono:wght@400;500&family=Flow+Circular&display=swap');

@@ -1,0 +1,24 @@
+/* Type roles from the "Create Design System" frame (Typography table). */
+:root{
+--ss-font-display:"BoutrosART","Montserrat Alternates","Montserrat",sans-serif;
+--ss-font-body:"Montserrat",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+--ss-font-ui:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;   /* table cells, tags, badges */
+--ss-font-button:"Arimo","Montserrat",sans-serif;                              /* primary button labels */
+
+/* Page Title — BoutrosART 40 / Medium, teal, capitalize */
+--ss-type-page-title-size:40px; --ss-type-page-title-lh:1.3; --ss-type-page-title-weight:500;
+/* Section Title — BoutrosART 24 / Medium (e.g. "Objective Performance Metrics", dialog titles) */
+--ss-type-section-size:24px; --ss-type-section-lh:1.3; --ss-type-section-weight:500;
+/* Sidebar Navigation — Montserrat 18 / Regular */
+--ss-type-nav-size:18px;
+/* Card Metric — Montserrat 16 / Medium */
+--ss-type-metric-size:16px; --ss-type-metric-weight:500; --ss-type-metric-lh:24px;
+/* Subtitle — Montserrat 16 / Regular, 24 */
+--ss-type-subtitle-size:16px; --ss-type-subtitle-lh:24px;
+/* Card Title / Table Header — Montserrat 14 / Regular, 20 */
+--ss-type-label-size:14px; --ss-type-label-lh:20px;
+/* Table Data / Status Badge — 12 / Regular */
+--ss-type-data-size:12px; --ss-type-data-lh:18px;
+/* Eyebrow — 14 / Medium, uppercase, 0.7px tracking */
+--ss-type-eyebrow-size:14px; --ss-type-eyebrow-tracking:0.7px;
+}

@@ -1,0 +1,79 @@
+/* SmartSpend color tokens — values copied from the Figma file
+   ("Create Design System" frame + "Variable collection" brand colors + screen usage). */
+:root{
+/* Brand */
+--ss-teal-700:#076567;        /* Primary Teal (Dark) — brand, sidebar, titles, primary buttons */
+--ss-teal-800:#0c5b61;        /* Primary Teal (Base) */
+--ss-teal-500:#168a8d;        /* Primary Teal (Light) */
+--ss-teal-400:#478a8b;        /* brand-6 */
+--ss-teal-200:#94b6b7;        /* brand-7 */
+--ss-teal-100:#c0cfd0;        /* brand-8 */
+--ss-purple-300:#c394ff;      /* Sidebar Active / Accent */
+--ss-purple-700:#56427b;      /* brand Color2 — progress fill, active indicator */
+--ss-navy-700:#213046;        /* brand Color3 — headings on white, filter icon */
+--ss-navy-600:#1c394a;        /* sidebar active row */
+--ss-lime-300:#afd96d;        /* brand-9 — chart accent */
+/* Neutrals */
+--ss-white:#ffffff;
+--ss-black:#000000;
+--ss-ink:#0a0a0a;             /* text-primary */
+--ss-gray-900:#262626;
+--ss-gray-800:#404040;
+--ss-gray-750:#474747;
+--ss-gray-700:#525252;        /* table text */
+--ss-slate-600:#4a5565;       /* card label / subtitle */
+--ss-slate-500:#45556c;       /* back link */
+--ss-gray-600:#737373;
+--ss-gray-550:#717182;        /* placeholder / text-sec */
+--ss-gray-500:#7c7c7c;
+--ss-gray-450:#99a1af;        /* search icon */
+--ss-gray-400:#6a7282;
+--ss-gray-300:#bdbdbd;
+--ss-gray-250:#c6c9ce;        /* dropdown stroke */
+--ss-gray-200:#dcdcdc;        /* table borders */
+--ss-gray-150:#e2e2e2;        /* table header bg */
+--ss-gray-120:#e5e5e5;
+--ss-gray-100:#efefef;        /* app page background */
+--ss-gray-80:#f1f1f1;         /* input fill */
+--ss-gray-60:#f5f5f5;
+--ss-gray-50:#f6f6f6;         /* zebra row */
+--ss-gray-25:#fafafa;
+--ss-gray-10:#fdfdfd;         /* table row */
+--ss-progress-track:#edf0f2;
+/* Status / semantic */
+--ss-green-600:#10a957;  --ss-green-50:#effef5;
+--ss-red-400:#ff5e5e;    --ss-red-50:#fff0f0;
+--ss-blue-400:#51c0ff;   --ss-blue-50:#edf9ff;
+--ss-indigo-500:#8b5cf6; --ss-indigo-50:#f7f3ff;
+--ss-orange-400:#fe9239; --ss-orange-50:#fff7ed;
+--ss-custom-600:#00c077; --ss-custom-50:#edfff8;
+--ss-ontrack:#21b873;    --ss-ontrack-bg:#e5f7ed;
+--ss-offtrack:#e84d3d;   --ss-offtrack-bg:#fce8e5;
+--ss-switch-on:#01db72;
+--ss-alarm:#fb7b37;
+--ss-approve:#00a63e;
+--ss-required:#ff0000;
+
+/* Semantic aliases */
+--ss-surface-page:var(--ss-gray-100);
+--ss-surface-card:var(--ss-white);
+--ss-surface-input:var(--ss-gray-80);
+--ss-surface-sidebar:var(--ss-teal-700);
+--ss-surface-sidebar-active:var(--ss-navy-600);
+--ss-surface-table-header:var(--ss-gray-150);
+--ss-surface-row:var(--ss-gray-10);
+--ss-surface-row-alt:var(--ss-gray-50);
+--ss-text-title:var(--ss-teal-700);
+--ss-text-heading:var(--ss-navy-700);
+--ss-text-body:var(--ss-ink);
+--ss-text-label:var(--ss-slate-600);
+--ss-text-muted:var(--ss-gray-550);
+--ss-text-table:var(--ss-gray-700);
+--ss-text-on-brand:var(--ss-white);
+--ss-border-card:rgba(0,0,0,0.1);
+--ss-border-subtle:var(--ss-gray-120);
+--ss-border-table:var(--ss-gray-200);
+--ss-action-primary:var(--ss-teal-700);
+--ss-action-primary-hover:var(--ss-teal-800);
+--ss-accent:var(--ss-purple-300);
+}

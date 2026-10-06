@@ -1,0 +1,29 @@
+/* Spacing, radii, shadows — exact values from the Figma screens. */
+:root{
+--ss-space-2:2px; --ss-space-4:4px; --ss-space-6:6px; --ss-space-8:8px; --ss-space-10:10px;
+--ss-space-12:12px; --ss-space-16:16px; --ss-space-20:20px; --ss-space-24:24px; --ss-space-26:26px;
+--ss-space-32:32px; --ss-space-48:48px; --ss-space-64:64px;
+
+--ss-radius-xs:2px;      /* pagination input */
+--ss-radius-sm:4px;      /* checkbox, select field */
+--ss-radius-md:8px;      /* inputs, outline button, cards */
+--ss-radius-lg:10px;     /* dropdown, color tile */
+--ss-radius-xl:14px;     /* panel */
+--ss-radius-pill-sm:20px;/* filter pills */
+--ss-radius-button:21px; /* primary button */
+--ss-radius-table:23px;  /* table container */
+--ss-radius-pill:30px;   /* floating pill button */
+--ss-radius-full:80px;   /* tags, badges */
+
+--ss-shadow-card:0px 1px 3px 0px rgba(0,0,0,0.1),0px 1px 2px -1px rgba(0,0,0,0.1);
+--ss-shadow-summary:0px 2px 4px 0px rgba(0,0,0,0.05);
+--ss-shadow-kpi:0 0 0 0.25px rgba(0,0,0,0.25),0px 2px 4px 0px rgba(0,0,0,0.05);
+--ss-shadow-float:0px 4px 4px 0px rgba(101,98,98,0.25);
+--ss-shadow-dropdown:0px 4px 4px 0px rgba(176,173,173,0.25);
+--ss-shadow-filter-pill:1px 1px 3.4px 0px rgba(16,25,52,0.2);
+--ss-shadow-toggle-knob:0px 1px 3px 0px rgba(36,36,36,0.2);
+
+--ss-sidebar-width:231px;
+--ss-topbar-height:92px;
+--ss-row-height:60px;
+}
