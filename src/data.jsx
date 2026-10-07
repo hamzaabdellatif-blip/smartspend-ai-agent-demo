@@ -1,11 +1,11 @@
 // SmartSpend AI Agent — demo data + i18n (client: Diar)
 const AA_STR = {
   en: {
-    nav: { overview: 'Overview', live: 'Live Calls', pipeline: 'Leads Pipeline', inbound: 'Inbound Calls', history: 'Call History', insights: 'Insights', signals: 'Qualification Signals', sources: 'Source vs Quality', whatsapp: 'WhatsApp Setup' },
+    nav: { overview: 'Overview', live: 'Live Calls', pipeline: 'Leads Pipeline', inbound: 'Inbound Calls', history: 'Call History', insights: 'Insights', signals: 'Qualification Signals', sources: 'Source vs Quality', whatsapp: 'Configuration' },
     client: 'Diar', agentOnline: 'AI Agent online', slots: 'call slots in use', allProjects: 'All projects',
     ovTitle: 'AI Agent Overview', ovSub: 'Every lead reached within seconds, qualified on the call, followed up on WhatsApp — only qualified leads go to Odoo.',
     hello: 'Good morning, Fawzy', liveNow: 'Live now', viewLive: 'Open live monitor',
-    kpis: { leads: 'Leads received', answer: 'Answer rate', qualified: 'Qualified of answered', dropped: 'Success rate', aht: 'Avg handling time', csat: 'Customer satisfaction', dial: 'Lead → first dial', odoo: 'Hang-up → Odoo' },
+    kpis: { leads: 'Leads received', answer: 'Answer rate', qualified: 'Qualified of answered', dropped: 'Success rate', aht: 'Avg handling time', csat: 'Customer satisfaction', dial: 'Registration → Call', odoo: 'Registration → Sales' },
     target: 'Target', onTrack: 'On Track', offTrack: 'Off Track',
     funnel: 'Lead funnel', funnelSteps: ['Leads captured', 'Called', 'Answered', 'Qualified', 'Sent to Odoo', 'Appointment booked', 'Attended appointment'],
     lang: 'Language mix', statusMix: 'Lead status', recentQ: 'Just qualified', seeAll: 'See all', today: 'Today', d7: '7 days', d30: '30 days', all: 'All time',
@@ -19,11 +19,11 @@ const AA_STR = {
     toastQ: 'qualified · pushed to Odoo', score: 'Score',
   },
   ar: {
-    nav: { overview: 'نظرة عامة', live: 'المكالمات المباشرة', pipeline: 'مسار العملاء', inbound: 'المكالمات الواردة', history: 'سجل المكالمات', insights: 'التحليلات', signals: 'إشارات التأهيل', sources: 'المصدر مقابل الجودة', whatsapp: 'إعدادات واتساب' },
+    nav: { overview: 'نظرة عامة', live: 'المكالمات المباشرة', pipeline: 'مسار العملاء', inbound: 'المكالمات الواردة', history: 'سجل المكالمات', insights: 'التحليلات', signals: 'إشارات التأهيل', sources: 'المصدر مقابل الجودة', whatsapp: 'الإعدادات' },
     client: 'ديار', agentOnline: 'الوكيل الذكي متصل', slots: 'خطوط مستخدمة', allProjects: 'كل المشاريع',
     ovTitle: 'نظرة عامة على الوكيل الذكي', ovSub: 'نصل لكل عميل خلال ثوانٍ، نؤهله أثناء المكالمة، نتابع عبر واتساب — والعملاء المؤهلون فقط يصلون إلى Odoo.',
     hello: 'صباح الخير، فوزي', liveNow: 'مباشر الآن', viewLive: 'فتح المراقبة المباشرة',
-    kpis: { leads: 'العملاء المستلمون', answer: 'نسبة الرد', qualified: 'المؤهلون من المجيبين', dropped: 'نسبة النجاح', aht: 'متوسط مدة المكالمة', csat: 'رضا العملاء', dial: 'من العميل إلى أول اتصال', odoo: 'من الإنهاء إلى Odoo' },
+    kpis: { leads: 'العملاء المستلمون', answer: 'نسبة الرد', qualified: 'المؤهلون من المجيبين', dropped: 'نسبة النجاح', aht: 'متوسط مدة المكالمة', csat: 'رضا العملاء', dial: 'من التسجيل إلى الاتصال', odoo: 'من التسجيل إلى المبيعات' },
     target: 'المستهدف', onTrack: 'على المسار', offTrack: 'خارج المسار',
     funnel: 'قمع العملاء', funnelSteps: ['عملاء مستلمون', 'تم الاتصال', 'تم الرد', 'مؤهلون', 'أُرسلوا إلى Odoo', 'حجزوا موعدًا', 'حضروا الموعد'],
     lang: 'توزيع اللغات', statusMix: 'حالة العملاء', recentQ: 'تأهلوا للتو', seeAll: 'عرض الكل', today: 'اليوم', d7: '٧ أيام', d30: '٣٠ يوم', all: 'كل الوقت',
@@ -76,13 +76,13 @@ const AA_SCRIPT = [
   { who: 'agent', ar: 'هل الشراء للسكن أو للاستثمار؟', en: 'Is the purchase for living or for investment?', signal: 'purpose' },
   { who: 'lead', ar: 'للسكن، أنا وعائلتي.', en: 'To live in, me and my family.', gain: { purpose: 20 } },
   { who: 'agent', ar: 'وين تسكن حالياً؟', en: 'Where are you based at the moment?', signal: 'location' },
-  { who: 'lead', ar: 'في مكة، حي العوالي.', en: 'In Makkah, Al-Awali district.', gain: { location: 10 } },
+  { who: 'lead', ar: 'في مكة، حي العوالي.', en: 'In Makkah, Al-Awali district.', gain: { location: 25 } },
   { who: 'agent', ar: 'ممتاز. أي نوع وحدة تفضل؟', en: 'Great. Which unit type do you prefer?', signal: 'unit' },
   { who: 'lead', ar: 'شقة ثلاث غرف.', en: 'A three-bedroom apartment.', gain: { unit: 10 } },
   { who: 'agent', ar: 'وكم الميزانية التقريبية؟', en: 'And roughly what budget?', signal: 'budget' },
   { who: 'lead', ar: 'بين ثمانمئة ألف ومليون ريال.', en: 'Between 800 thousand and one million riyals.', gain: { budget: 15 } },
-  { who: 'agent', ar: 'متى تخطط للشراء؟', en: 'When are you planning to buy?', signal: 'timeline' },
-  { who: 'lead', ar: 'خلال شهرين إن شاء الله. وأبي أزور المشروع.', en: 'Within two months, God willing. And I want to visit the project.', gain: { timeline: 20, engagement: 15 } },
+  { who: 'agent', ar: 'متى تحتاج استلام الوحدة؟', en: 'When do you need the unit handed over?', signal: 'timeline' },
+  { who: 'lead', ar: 'خلال شهرين إن شاء الله. وأبي أزور المشروع.', en: 'Within two months, God willing. And I want to visit the project.', gain: { timeline: 20 } },
   { who: 'agent', ar: 'رائع. سيتصل بك مستشار المبيعات اليوم بين ٤ و٦ مساءً، وتصلك التفاصيل على واتساب. موافق؟', en: 'Wonderful. An advisor will call you today 4–6 pm, details on WhatsApp. Agreed?', signal: 'permission' },
   { who: 'lead', ar: 'موافق، شكراً.', en: 'Agreed, thanks.', override: true },
 ];
@@ -90,17 +90,16 @@ const AA_SCRIPT = [
 const AA_RUBRIC = [
   { id: 'purpose', en: 'Purpose', ar: 'الغرض', max: 20 },
   { id: 'budget', en: 'Budget fit', ar: 'ملاءمة الميزانية', max: 25 },
-  { id: 'timeline', en: 'Timeline', ar: 'الجدول الزمني', max: 20 },
-  { id: 'location', en: 'Location', ar: 'الموقع', max: 10 },
+  { id: 'timeline', en: 'Delivery date', ar: 'موعد التسليم', max: 20 },
+  { id: 'location', en: 'Location', ar: 'الموقع', max: 25 },
   { id: 'unit', en: 'Unit preference', ar: 'نوع الوحدة', max: 10 },
-  { id: 'engagement', en: 'Engagement', ar: 'التفاعل', max: 15 },
 ];
 // Not scored: if the lead agrees to a sales call, they go straight to sales whatever the score.
 const AA_OVERRIDE = { en: 'Permission for a sales call', ar: 'الإذن باتصال من المبيعات', tagEn: 'Overrides score', tagAr: 'يتجاوز التقييم', noteEn: 'Lead goes straight to sales, whatever the score', noteAr: 'يُحوَّل العميل للمبيعات مباشرة مهما كان التقييم' };
 
 const AA_LIVE = [
   { name: 'Hana Al-Ghamdi', project: 'Al-Narjis', lang: 'AR', sec: 74, stage: 'Budget' },
-  { name: 'Mark Ellison', project: 'Diar AlHaram', lang: 'EN', sec: 131, stage: 'Timeline' },
+  { name: 'Mark Ellison', project: 'Diar AlHaram', lang: 'EN', sec: 131, stage: 'Delivery date' },
   { name: 'Salem Al-Anazi', project: 'Diar AlHaram', lang: 'AR', sec: 12, stage: 'Greeting' },
   { name: 'Dana Youssef', project: 'Al-Narjis', lang: 'EN', sec: 96, stage: 'Unit type' },
   { name: 'Majed Al-Rashid', project: 'Al-Narjis', lang: 'AR', sec: 48, stage: 'Purpose' },

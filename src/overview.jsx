@@ -75,7 +75,7 @@ function Overview({ t, lang, hero, go, openLead, project }) {
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 16 }}>
-        {[[t.kpis.leads, leads.toLocaleString(), 'users', [12, 18, 15, 22, 26, 24, 31]], [t.kpis.csat, '3.7 / 5', 'smile', [3.4, 3.5, 3.6, 3.5, 3.7, 3.8, 3.7]], [t.kpis.dial, '42 s', 'timer', [58, 51, 47, 49, 44, 41, 42]], [t.kpis.odoo, '1m 24s', 'refresh-cw', [130, 118, 101, 96, 90, 88, 84]]].map(([l, v, ic, sp]) => (
+        {[[t.kpis.leads, leads.toLocaleString(), 'users', [12, 18, 15, 22, 26, 24, 31]], [t.kpis.csat, '3.7 / 5', 'smile', [3.4, 3.5, 3.6, 3.5, 3.7, 3.8, 3.7]], [t.kpis.dial, '42 s', 'timer', [58, 51, 47, 49, 44, 41, 42]], [t.kpis.odoo, '4m 12s', 'briefcase-business', [330, 301, 288, 276, 270, 259, 252]]].map(([l, v, ic, sp]) => (
           <div key={l} style={{ background: '#fff', borderRadius: 12, padding: '16px 18px', boxShadow: 'var(--ss-shadow-kpi)', display: 'flex', alignItems: 'center', gap: 14 }}>
             <span style={{ width: 40, height: 40, borderRadius: 10, background: 'rgba(7,101,103,0.08)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><DS.Icon name={ic} size={19} color="var(--ss-teal-700)" /></span>
             <div style={{ flex: 1, minWidth: 0 }}><div style={{ fontSize: 13, color: 'var(--ss-slate-600)' }}>{l}</div><div style={{ fontSize: 20, fontWeight: 600, color: 'var(--ss-ink)' }}>{v}</div></div>
@@ -91,13 +91,12 @@ function Overview({ t, lang, hero, go, openLead, project }) {
             { label: t.funnelSteps[2], value: answered, color: 'var(--ss-teal-500)' },
             { label: t.funnelSteps[3], value: qualified, color: 'var(--ss-green-600)' },
             { label: t.funnelSteps[5], value: Math.round(236 * k), color: 'var(--ss-purple-300)' },
-            { label: t.funnelSteps[6], value: Math.round(171 * k), color: 'var(--ss-lime-300)' },
           ]} />
         </Panel>
         <Panel title={t.lang}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 28, flexWrap: 'wrap' }}>
             <Donut data={[{ value: 62, color: 'var(--ss-teal-700)' }, { value: 30, color: 'var(--ss-purple-300)' }, { value: 8, color: 'var(--ss-lime-300)' }]} center={<><span style={{ fontSize: 22, fontWeight: 600 }}>{answered.toLocaleString()}</span><span style={{ fontSize: 11, color: 'var(--ss-gray-550)' }}>{t.funnelSteps[2]}</span></>} />
-            <div style={{ flex: 1, minWidth: 160 }}><Legend data={[{ label: lang === 'ar' ? 'العربية (سعودي)' : 'Arabic (Saudi)', value: 62, color: 'var(--ss-teal-700)' }, { label: lang === 'ar' ? 'الإنجليزية' : 'English', value: 30, color: 'var(--ss-purple-300)' }, { label: lang === 'ar' ? 'الفرنسية ← إنجليزي' : 'French → handled in English', value: 8, color: 'var(--ss-lime-300)' }]} /></div>
+            <div style={{ flex: 1, minWidth: 160 }}><Legend data={[{ label: lang === 'ar' ? 'العربية (سعودي)' : 'Arabic (Saudi)', value: 62, color: 'var(--ss-teal-700)' }, { label: lang === 'ar' ? 'الإنجليزية' : 'English', value: 30, color: 'var(--ss-purple-300)' }, { label: lang === 'ar' ? 'الفرنسية' : 'French', value: 8, color: 'var(--ss-lime-300)' }]} /></div>
           </div>
         </Panel>
       </div>
@@ -125,21 +124,6 @@ function Overview({ t, lang, hero, go, openLead, project }) {
             {statusData.map((s, i) => <span key={i} style={{ width: s.value + '%', background: s.color }} />)}
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 10 }}><Legend data={statusData.slice(0, 3)} /><Legend data={statusData.slice(3)} /></div>
-        </Panel>
-        <Panel title={lang === 'ar' ? 'المواعيد وزيارات الموقع' : 'Appointments & site visits'} action={<DS.StatusBadge color="gray" size="small">{lang === 'ar' ? 'من Odoo' : 'Synced from Odoo'}</DS.StatusBadge>}>
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, flexWrap: 'wrap', marginBottom: 6 }}>
-            <span style={{ fontSize: 34, fontWeight: 600, color: 'var(--ss-ink)', fontVariantNumeric: 'tabular-nums' }}>{Math.round(171 * k).toLocaleString()}</span>
-            <span style={{ fontSize: 14, color: 'var(--ss-slate-600)' }}>{lang === 'ar' ? 'عميل حضروا موعدهم بالفعل' : 'customers have already attended their appointment'}</span>
-          </div>
-          <div style={{ fontSize: 13, color: 'var(--ss-gray-550)', marginBottom: 16 }}>{lang === 'ar' ? 'من أصل ' + Math.round(236 * k).toLocaleString() + ' موعد حجزه الوكيل · نسبة الحضور ٧٢٪' : 'Out of ' + Math.round(236 * k).toLocaleString() + ' appointments booked by the agent · 72% show-up rate'}</div>
-          <div style={{ display: 'flex', height: 14, borderRadius: 7, overflow: 'hidden', marginBottom: 18 }}>
-            {[[72, 'var(--ss-green-600)'], [17, 'var(--ss-teal-200)'], [11, 'var(--ss-red-400)']].map(([v, c], i) => <span key={i} style={{ width: v + '%', background: c }} />)}
-          </div>
-          <Legend unit="" data={[
-            { label: lang === 'ar' ? 'حضروا' : 'Attended', value: Math.round(171 * k), color: 'var(--ss-green-600)' },
-            { label: lang === 'ar' ? 'مواعيد قادمة' : 'Upcoming', value: Math.round(39 * k), color: 'var(--ss-teal-200)' },
-            { label: lang === 'ar' ? 'لم يحضروا' : 'No-show', value: Math.round(26 * k), color: 'var(--ss-red-400)' },
-          ]} />
         </Panel>
         <Panel title={t.recentQ} action={<DS.Button variant="text" onClick={() => go('pipeline')}>{t.seeAll}</DS.Button>} pad={12}>
           {recent.map(l => (

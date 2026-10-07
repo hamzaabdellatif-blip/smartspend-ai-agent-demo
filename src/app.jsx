@@ -38,8 +38,7 @@ function App() {
   else if (route === 'history') screen = <CallHistory {...props} />;
   else if (route === 'whatsapp') screen = <WhatsAppConfig {...props} />;
   else if (route === 'sources') screen = <SourceQuality {...props} />;
-  else if (route === 'signals') screen = <Signals {...props} />;
-  else if (route === 'insights') screen = <Insights {...props} />;
+  else if (route === 'insights' || route === 'signals') screen = <Insights {...props} />;
   else screen = <Overview {...props} hero={tw.hero} />;
   return (
     <div style={{ display: 'flex', minHeight: '100vh' }}>

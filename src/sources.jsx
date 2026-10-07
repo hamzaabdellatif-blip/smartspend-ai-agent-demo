@@ -47,13 +47,12 @@ function SourceQuality({ t, lang }) {
   const ranges = [['today', t.today], ['d7', t.d7], ['d30', t.d30], ['all', t.all]];
   const rows = SQ_DATA.map(([s, leads, ans, q, score, att, cpl, color]) => ({ s, leads: Math.round(leads * k), ans, q, score, qualified: Math.round(leads * k * ans / 100 * q / 100), att: Math.round(att * k), cpl, color }));
   const best = [...rows].sort((a, b) => b.score - a.score)[0];
-  const cheapest = [...rows].sort((a, b) => a.cpl - b.cpl)[0];
   const worst = [...rows].sort((a, b) => a.score - b.score)[0];
   const mix = { // hot / warm / cold share of scored leads
     'Meta': [21, 46, 33], 'Google': [29, 47, 24], 'TikTok': [9, 34, 57], 'Snapchat': [7, 32, 61], 'QR / Landing page': [38, 44, 18], 'Odoo (re-engaged)': [17, 45, 38],
   };
   const tiers = [[ar ? 'ساخن (٨٠+)' : 'Hot (80+)', 'var(--ss-green-600)'], [ar ? 'دافئ (٥٠–٧٩)' : 'Warm (50–79)', 'var(--ss-orange-400)'], [ar ? 'بارد (<٥٠)' : 'Cold (<50)', 'var(--ss-gray-300)']];
-  const H = ar ? ['المصدر', 'العملاء', 'نسبة الرد', 'المؤهلون', 'نسبة التأهل', 'متوسط الدرجة', 'حضروا موعدًا', 'تكلفة العميل المؤهل'] : ['Source', 'Leads', 'Answer rate', 'Qualified', 'Qualified %', 'Avg score', 'Attended appt.', 'Cost per qualified'];
+  const H = ar ? ['المصدر', 'العملاء', 'نسبة الرد', 'المؤهلون', 'نسبة التأهل', 'متوسط الدرجة'] : ['Source', 'Leads', 'Answer rate', 'Qualified', 'Qualified %', 'Avg score'];
   return (
     <div>
       <PageHead
@@ -62,7 +61,7 @@ function SourceQuality({ t, lang }) {
         right={<DS.ButtonGroup items={ranges.map(r => r[1])} value={ranges.find(r => r[0] === range)[1]} onChange={v => setRange(ranges.find(r => r[1] === v)[0])} activeColor="var(--ss-teal-700)" style={{ background: '#fff' }} />}
       />
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 14, marginBottom: 20 }}>
-        {[['star', ar ? 'أعلى جودة' : 'Highest quality', best.s, (ar ? 'متوسط الدرجة ' : 'Avg score ') + best.score], ['currency', ar ? 'أقل تكلفة لكل مؤهل' : 'Cheapest qualified lead', cheapest.s, 'SAR ' + cheapest.cpl], ['circle-alert', ar ? 'أقل جودة' : 'Lowest quality', worst.s, (ar ? 'متوسط الدرجة ' : 'Avg score ') + worst.score]].map(([ic, l, v, sub]) => (
+        {[['star', ar ? 'أعلى جودة' : 'Highest quality', best.s, (ar ? 'متوسط الدرجة ' : 'Avg score ') + best.score], ['circle-alert', ar ? 'أقل جودة' : 'Lowest quality', worst.s, (ar ? 'متوسط الدرجة ' : 'Avg score ') + worst.score]].map(([ic, l, v, sub]) => (
           <div key={l} style={{ background: '#fff', borderRadius: 12, padding: '16px 18px', boxShadow: 'var(--ss-shadow-kpi)', display: 'flex', alignItems: 'center', gap: 14 }}>
             <span style={{ width: 40, height: 40, borderRadius: 10, background: 'rgba(7,101,103,0.08)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><DS.Icon name={ic} size={19} color="var(--ss-teal-700)" /></span>
             <div style={{ minWidth: 0 }}><div style={{ fontSize: 13, color: 'var(--ss-slate-600)' }}>{l}</div><div style={{ fontSize: 18, fontWeight: 600, color: 'var(--ss-ink)' }}>{v}</div><div style={{ fontSize: 12, color: 'var(--ss-gray-550)' }}>{sub}</div></div>
@@ -85,12 +84,9 @@ function SourceQuality({ t, lang }) {
           </div>
         </Panel>
       </div>
-      <Panel title={ar ? 'العملاء والمؤهلون حسب المصدر' : 'Leads vs qualified by source'} style={{ marginBottom: 20 }} action={<div style={{ display: 'flex', gap: 14, fontSize: 12, color: 'var(--ss-slate-600)' }}><span><i style={{ display: 'inline-block', width: 8, height: 8, borderRadius: 2, background: 'var(--ss-teal-700)', marginInlineEnd: 6 }} />{ar ? 'عملاء' : 'Leads'}</span><span><i style={{ display: 'inline-block', width: 8, height: 8, borderRadius: 2, background: 'var(--ss-purple-300)', marginInlineEnd: 6 }} />{ar ? 'مؤهلون' : 'Qualified'}</span></div>}>
-        <Bars key={range} data={rows.map(r => ({ label: r.s.split(' ')[0], a: r.leads, b: r.qualified }))} color="var(--ss-teal-700)" color2="var(--ss-purple-300)" height={200} />
-      </Panel>
       <div style={{ background: '#fff', borderRadius: 23, overflow: 'hidden' }}>
         <div style={{ overflowX: 'auto' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'minmax(170px, 1.6fr) repeat(6, minmax(100px, 1fr)) minmax(150px, 1.3fr)', minWidth: 960 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'minmax(170px, 1.6fr) repeat(5, minmax(100px, 1fr))', minWidth: 720 }}>
             {H.map(h => <DS.TableCell key={h} type="header">{h}</DS.TableCell>)}
             {rows.map((r, i) => { const col = i % 2 ? 'gray' : 'white'; return (
               <React.Fragment key={r.s}>
@@ -100,8 +96,6 @@ function SourceQuality({ t, lang }) {
                 <DS.TableCell color={col}>{r.qualified.toLocaleString()}</DS.TableCell>
                 <DS.TableCell color={col}>{r.q}%</DS.TableCell>
                 <DS.TableCell color={col} type="tag" tagColor={r.score >= 75 ? 'green' : r.score >= 60 ? 'orange' : 'gray'}>{r.score}</DS.TableCell>
-                <DS.TableCell color={col}>{r.att.toLocaleString()}</DS.TableCell>
-                <DS.TableCell color={col}>SAR {r.cpl}</DS.TableCell>
               </React.Fragment>); })}
           </div>
         </div>

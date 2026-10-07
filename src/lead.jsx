@@ -20,7 +20,7 @@ function LeadDetail({ t, lang, id, back }) {
     ['purpose', lang === 'ar' ? 'سكن' : 'residence'], ['location', lang === 'ar' ? 'مكة · العوالي' : 'Makkah · Al-Awali'], ['unit_type', l.unit === '—' ? '3br' : l.unit.toLowerCase()], ['budget_sar', '800,000 – 1,000,000'], ['timeline_months', '2'],
     ['financing', 'bank'], ['viewing_requested', 'true'], ['consent_whatsapp', 'true'], ['consent_sales_call', isQ ? 'true' : 'false'], ['preferred_callback', lang === 'ar' ? 'اليوم ١٦:٠٠–١٨:٠٠' : 'Today 16:00–18:00'], ['sentiment', 'positive'], ['next_action', 'advisor_call'],
   ];
-  const rubric = { purpose: 20, budget: 15, timeline: 20, location: 10, unit: 10, engagement: 15 };
+  const rubric = { purpose: 20, budget: 15, timeline: 20, location: 25, unit: 10 };
   const scale = score / 90;
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>

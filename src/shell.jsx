@@ -49,7 +49,7 @@ function ScoreRing({ score = 0, size = 64, stroke = 6, dark, label }) {
   );
 }
 
-const NAV = [['overview', 'layout-dashboard'], ['live', 'phone-call'], ['inbound', 'phone-incoming'], ['pipeline', 'kanban'], ['history', 'history'], ['insights', 'chart-no-axes-combined'], ['signals', 'sparkles'], ['sources', 'chart-column'], ['whatsapp', 'message-circle']];
+const NAV = [['overview', 'layout-dashboard'], ['live', 'phone-call'], ['inbound', 'phone-incoming'], ['pipeline', 'kanban'], ['history', 'history'], ['insights', 'chart-no-axes-combined'], ['sources', 'chart-column'], ['whatsapp', 'settings']];
 
 function AASidebar({ route, go, t, theme, rail: railIn, mobile, open, onClose }) {
   const bg = theme === 'navy' ? '#16202f' : 'var(--ss-teal-700)';

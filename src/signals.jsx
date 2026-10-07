@@ -19,7 +19,7 @@ function Signals({ t, lang }) {
   const k = SG_RANGES[range];
   const n = v => Math.round(v * k).toLocaleString();
   const ranges = [['today', t.today], ['d7', t.d7], ['d30', t.d30], ['all', t.all]];
-  const avg = { purpose: 16.4, budget: 15.1, timeline: 13.2, location: 7.3, unit: 8.1, engagement: 11.6 };
+  const avg = { purpose: 16.4, budget: 15.1, timeline: 13.2, location: 18.3, unit: 8.1 };
   const purpose = [
     { label: ar ? 'سكن للعائلة' : 'Family home', value: 48, color: 'var(--ss-teal-700)' },
     { label: ar ? 'استثمار / تأجير' : 'Investment / rental', value: 31, color: 'var(--ss-purple-300)' },
@@ -60,23 +60,17 @@ function Signals({ t, lang }) {
   );
   return (
     <div>
-      <PageHead
-        title={ar ? 'إشارات التأهيل' : 'Qualification Signals'}
-        sub={ar ? 'ما يخبرنا به العملاء أثناء المكالمة: الغرض، الميزانية، التوقيت، الموقع، ونوع الوحدة.' : 'What leads tell the agent on the call: purpose, budget, timeline, location and the unit they want.'}
-        right={<DS.ButtonGroup items={ranges.map(r => r[1])} value={ranges.find(r => r[0] === range)[1]} onChange={v => setRange(ranges.find(r => r[1] === v)[0])} activeColor="var(--ss-teal-700)" style={{ background: '#fff' }} />}
-      />
-      <div key={range} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 150px), 1fr))', gap: 14, marginBottom: 20 }}>
-        {[[ar ? 'عملاء تم تقييمهم' : 'Leads scored', n(937)], [ar ? 'متوسط الدرجة' : 'Avg score', '73 / 100'], [ar ? 'عملاء ساخنون (٨٠+)' : 'Hot leads (80+)', '22%'], [ar ? 'جاهزون خلال ٣ أشهر' : 'Ready in 3 months', '52%'], [ar ? 'مشترون نقدًا' : 'Cash buyers', '27%'], [ar ? 'متوسط الميزانية' : 'Median budget', 'SAR 1.05M']].map(([l, v]) => <DS.SummaryCard key={l} label={l} value={v} />)}
-      </div>
-      <Panel title={ar ? 'ملاحظات الذكاء الاصطناعي' : 'What the AI noticed'} action={<DS.StatusBadge color="gray" size="small">AI Batch QA</DS.StatusBadge>} style={{ marginBottom: 20 }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 14 }}>
-          {findings.map(([ic, text]) => (
-            <div key={text} style={{ display: 'flex', gap: 12, padding: 14, borderRadius: 12, background: 'rgba(7,101,103,0.06)' }}>
-              <span style={{ width: 34, height: 34, borderRadius: 9, background: '#fff', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><DS.Icon name={ic} size={17} color="var(--ss-teal-700)" /></span>
-              <span style={{ fontSize: 13, lineHeight: '19px', color: 'var(--ss-ink)' }}>{text}</span>
-            </div>))}
+      <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap', margin: '40px 0 20px', paddingTop: 32, borderTop: '1px solid rgba(0,0,0,0.08)' }}>
+        <div style={{ maxWidth: 760 }}>
+          <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: 0.7, textTransform: 'uppercase', color: 'var(--ss-purple-700)', marginBottom: 6 }}>{ar ? 'تحليلات موسّعة من المكالمات' : 'Extended call insights'}</div>
+          <h2 style={{ margin: 0, fontFamily: 'var(--ss-font-display)', fontWeight: 500, fontSize: 28, lineHeight: 1.3, color: 'var(--ss-teal-700)' }}>{ar ? 'إشارات التأهيل' : 'Qualification signals'}</h2>
+          <p style={{ margin: '6px 0 0', fontSize: 15, lineHeight: '22px', color: 'var(--ss-slate-600)' }}>{ar ? 'ما يخبرنا به العملاء أثناء كل مكالمة: الغرض، الميزانية، موعد التسليم، الموقع، ونوع الوحدة.' : 'What leads tell the agent on every call: purpose, budget, delivery date, location and the unit they want.'}</p>
         </div>
-      </Panel>
+        <DS.ButtonGroup items={ranges.map(r => r[1])} value={ranges.find(r => r[0] === range)[1]} onChange={v => setRange(ranges.find(r => r[1] === v)[0])} activeColor="var(--ss-teal-700)" style={{ background: '#fff' }} />
+      </div>
+      <div key={range} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 150px), 1fr))', gap: 14, marginBottom: 20 }}>
+        {[[ar ? 'عملاء تم تقييمهم' : 'Leads scored', n(937)], [ar ? 'متوسط الدرجة' : 'Avg score', '73 / 100'], [ar ? 'عملاء ساخنون (٨٠+)' : 'Hot leads (80+)', '22%'], [ar ? 'مشترون نقدًا' : 'Cash buyers', '27%'], [ar ? 'متوسط الميزانية' : 'Median budget', 'SAR 1.05M']].map(([l, v]) => <DS.SummaryCard key={l} label={l} value={v} />)}
+      </div>
       <Panel title={ar ? 'الإذن باتصال المبيعات يتجاوز التقييم' : 'Sales-call permission overrides the score'} action={<DS.StatusBadge color="gray" size="small">{ar ? 'قاعدة التأهيل' : 'Qualification rule'}</DS.StatusBadge>} style={{ marginBottom: 20 }}>
         <div style={{ fontSize: 13, color: 'var(--ss-slate-600)', marginBottom: 16, maxWidth: 760 }}>{ar ? 'إذا وافق العميل على أن يتصل به فريق المبيعات، يُحوَّل مباشرة إلى Odoo كعميل مؤهل، بغض النظر عن درجة باقي الإشارات.' : 'If a lead agrees to a call from your sales team, they go straight to Odoo as qualified, no matter how the other signals scored.'}</div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', gap: 14 }}>
@@ -100,7 +94,7 @@ function Signals({ t, lang }) {
         <Panel title={ar ? 'الميزانية (ريال)' : 'Budget (SAR)'} action={<div style={{ display: 'flex', gap: 14, fontSize: 12, color: 'var(--ss-slate-600)' }}>{legendKey('var(--ss-teal-700)', ar ? 'عملاء' : 'Leads')}{legendKey('var(--ss-purple-300)', ar ? 'مؤهلون' : 'Qualified')}</div>}>
           <Bars data={budget} color="var(--ss-teal-700)" color2="var(--ss-purple-300)" height={200} />
         </Panel>
-        <Panel title={ar ? 'موعد الشراء المتوقع' : 'Buying timeline'}>
+        <Panel title={ar ? 'موعد التسليم المفضل' : 'Preferred delivery date'}>
           <SignalBars rows={timeline} max={40} color="var(--ss-purple-700)" />
         </Panel>
         <Panel title={ar ? 'نوع الوحدة المطلوبة' : 'Unit preference'}>

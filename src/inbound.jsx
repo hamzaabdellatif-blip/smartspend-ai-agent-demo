@@ -30,10 +30,9 @@ function InboundCalls({ t, lang, project }) {
     generic: { color: 'gray', en: 'Generic inquiry', ar: 'استفسار عام' },
   };
   const routing = [
-    { label: ar ? 'وكيل المشروع' : 'Routed to project agent', value: 54, color: 'var(--ss-teal-700)' },
-    { label: ar ? 'الوكيل العام' : 'Handled by generic agent', value: 28, color: 'var(--ss-purple-300)' },
-    { label: ar ? 'تحويل لموظف مبيعات' : 'Transferred to a human', value: 13, color: 'var(--ss-orange-400)' },
-    { label: ar ? 'خارج أوقات العمل / بريد صوتي' : 'After hours / voicemail', value: 5, color: 'var(--ss-gray-300)' },
+    { label: ar ? 'وكيل المشروع' : 'Routed to project agent', value: 57, color: 'var(--ss-teal-700)' },
+    { label: ar ? 'الوكيل العام' : 'Handled by generic agent', value: 29, color: 'var(--ss-purple-300)' },
+    { label: ar ? 'تحويل لموظف مبيعات' : 'Transferred to a human', value: 14, color: 'var(--ss-orange-400)' },
   ];
   const daily = (ar ? ['سبت', 'أحد', 'اثن', 'ثلا', 'أرب', 'خمي', 'جمع'] : ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri']).map((label, i) => ({ label, a: [34, 38, 29, 31, 33, 27, 20][i], b: [11, 13, 9, 10, 11, 8, 5][i] }));
   const days = ar ? ['سبت', 'أحد', 'اثن', 'ثلا', 'أرب', 'خمي', 'جمع'] : ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
@@ -52,7 +51,7 @@ function InboundCalls({ t, lang, project }) {
         {[[ar ? 'مكالمات واردة' : 'Inbound calls', n(212)], [ar ? 'رد عليها الوكيل' : 'Answered by AI', '98%'], [ar ? 'متوسط وقت الرد' : 'Avg pickup time', '3 s'], [ar ? 'حُلّت آليًا' : 'Resolved by AI', '64%'], [ar ? 'عملاء مؤهلون' : 'Qualified leads', n(71)], [ar ? 'رضا المتصلين' : 'Caller CSAT', '4.1 / 5']].map(([l, v]) => <DS.SummaryCard key={l} label={l} value={v} />)}
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 440px), 1fr))', gap: 20, marginBottom: 20 }}>
-        <Panel title={ar ? 'لماذا يتصل العملاء' : 'Why people call'} action={<DS.StatusBadge color="gray" size="small">AI Batch QA</DS.StatusBadge>}>
+        <Panel title={ar ? 'لماذا يتصل العملاء' : 'Why people call'}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
             {reasonMix.map(([id, v]) => <div key={id} style={{ display: 'grid', gridTemplateColumns: 'minmax(150px, 210px) 1fr 40px', gap: 12, alignItems: 'center', fontSize: 13 }}><span style={{ color: 'var(--ss-slate-600)' }}>{reasons[id]}</span><div style={{ height: 8, borderRadius: 4, background: 'var(--ss-progress-track)' }}><div style={{ width: v * 2.5 + '%', height: '100%', borderRadius: 4, background: 'var(--ss-teal-700)' }} /></div><span style={{ textAlign: 'end' }}>{v}%</span></div>)}
           </div>

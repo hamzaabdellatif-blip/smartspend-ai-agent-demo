@@ -76,7 +76,7 @@ function Insights({ t, lang }) {
           <Heatmap rows={days} cols={hours} values={heat} />
           <div style={{ fontSize: 12, color: 'var(--ss-gray-550)', marginTop: 12 }}>{lang === 'ar' ? 'النافذة: سبت–خميس ٠٩:٠٠–٢١:٠٠ بتوقيت السعودية · ذروة ١٧–١٩' : 'Window Sat–Thu 09:00–21:00 KSA · peak 17:00–19:00'}</div>
         </Panel>
-        <Panel title={lang === 'ar' ? 'المواضيع الأكثر نقاشاً' : 'Topics discussed'} action={<DS.StatusBadge color="gray" size="small">AI Batch QA</DS.StatusBadge>}>
+        <Panel title={lang === 'ar' ? 'المواضيع الأكثر نقاشاً' : 'Topics discussed'}>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
             {topics.map(([n, v], i) => <span key={n} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '8px 14px', borderRadius: 20, background: i < 2 ? 'var(--ss-teal-700)' : 'rgba(7,101,103,' + (0.14 - i * 0.015) + ')', color: i < 2 ? '#fff' : 'var(--ss-teal-800)', fontSize: 12 + Math.round(v / 10) }}>{n}<b style={{ fontWeight: 600, fontSize: 12 }}>{v}%</b></span>)}
           </div>
@@ -102,6 +102,7 @@ function Insights({ t, lang }) {
           </div>
         </Panel>
       </div>
+      <Signals t={t} lang={lang} />
     </div>
   );
 }
