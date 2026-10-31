@@ -21,7 +21,7 @@ function LiveCall({ t, lang, speed, onQualified, openLead }) {
   React.useEffect(() => { if (phase !== 'call') return; const id = setInterval(() => setSec(s => s + 1), 1000 / speed); return () => clearInterval(id); }, [phase, speed]);
   React.useEffect(() => {
     if (phase !== 'scoring') return;
-    if (post >= 4) { setPhase('done'); onQualified && onQualified({ name: lang === 'ar' ? 'فيصل الحربي' : 'Faisal Al-Harbi', score: 90 }); return; }
+    if (post >= 4) { setPhase('done'); onQualified && onQualified({ name: AA_RG.live.name[lang], score: 90 }); return; }
     const id = setTimeout(() => setPost(p => p + 1), 900 / speed);
     return () => clearTimeout(id);
   }, [phase, post, speed]);
@@ -39,11 +39,11 @@ function LiveCall({ t, lang, speed, onQualified, openLead }) {
       <div style={{ position: 'absolute', insetInlineStart: -140, bottom: -180, width: 420, height: 420, borderRadius: '50%', background: 'rgba(7,101,103,0.4)', filter: 'blur(70px)', pointerEvents: 'none' }} />
       <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: 16, minWidth: 0 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-          <DS.Avatar initials="FH" size={48} color="custom" />
+          <DS.Avatar initials={AA_RG.live.initials} size={48} color="custom" />
           <div style={{ flex: 1, minWidth: 0 }}>
             <div style={{ fontSize: 12, opacity: 0.65, display: 'flex', alignItems: 'center', gap: 6 }}>{phase === 'call' ? <LiveDot /> : null}{phase === 'call' ? t.listening : t.endedQ}</div>
-            <div style={{ fontSize: 18, fontWeight: 500 }}>{lang === 'ar' ? 'فيصل الحربي' : 'Faisal Al-Harbi'}</div>
-            <div style={{ fontSize: 12, opacity: 0.65 }}>Diar AlHaram · Landing page (QR) · AR · Outbound 1/3</div>
+            <div style={{ fontSize: 18, fontWeight: 500 }}>{AA_RG.live.name[lang]}</div>
+            <div style={{ fontSize: 12, opacity: 0.65 }}>{AA_PROJECTS[0]} · Landing page (QR) · AR · Outbound 1/3</div>
           </div>
           <span style={{ fontSize: 22, fontVariantNumeric: 'tabular-nums', fontWeight: 600 }}>{fmtSec(sec)}</span>
         </div>
@@ -102,7 +102,7 @@ function LiveCalls({ t, lang, speed, onQualified, openLead, project }) {
   const queue = AA_LEADS.filter(l => l.status === 'new' || l.status === 'call_back');
   return (
     <div>
-      <PageHead title={t.liveTitle} sub={t.liveSub} right={<div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}><DS.Tag size="md" color="green" dot>{lang === 'ar' ? 'نافذة الاتصال مفتوحة · سبت–خميس ٩–٢١' : 'Calling window open · Sat–Thu 09:00–21:00 KSA'}</DS.Tag></div>} />
+      <PageHead title={t.liveTitle} sub={t.liveSub} right={<div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}><DS.Tag size="md" color="green" dot>{AA_RG.liveWindow[lang]}</DS.Tag></div>} />
       <LiveCall t={t} lang={lang} speed={speed} onQualified={onQualified} openLead={openLead} />
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 420px), 1fr))', gap: 20, marginTop: 24 }}>
         <Panel title={lang === 'ar' ? 'مكالمات أخرى جارية' : 'Other calls in progress'}>

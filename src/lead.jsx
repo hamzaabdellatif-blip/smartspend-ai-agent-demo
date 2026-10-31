@@ -17,7 +17,7 @@ function LeadDetail({ t, lang, id, back }) {
     ['message-circle', 'WhatsApp', isQ ? 'lead_qualified_followup · ' + (lang === 'ar' ? 'تم القراءة' : 'Read') : 'lead_unreachable_notice', '09:13:58'],
   ];
   const fields = [
-    ['purpose', lang === 'ar' ? 'سكن' : 'residence'], ['location', lang === 'ar' ? 'مكة · العوالي' : 'Makkah · Al-Awali'], ['unit_type', l.unit === '—' ? '3br' : l.unit.toLowerCase()], ['budget_sar', '800,000 – 1,000,000'], ['timeline_months', '2'],
+    ['purpose', lang === 'ar' ? 'سكن' : 'residence'], ['location', AA_RG.lead.location[lang]], ['unit_type', l.unit === '—' ? '3br' : l.unit.toLowerCase()], [AA_RG.lead.budgetKey, AA_RG.lead.budget], ['timeline_months', '2'],
     ['financing', 'bank'], ['viewing_requested', 'true'], ['consent_whatsapp', 'true'], ['consent_sales_call', isQ ? 'true' : 'false'], ['preferred_callback', lang === 'ar' ? 'اليوم ١٦:٠٠–١٨:٠٠' : 'Today 16:00–18:00'], ['sentiment', 'positive'], ['next_action', 'advisor_call'],
   ];
   const rubric = { purpose: 20, budget: 15, timeline: 20, location: 25, unit: 10 };
@@ -30,7 +30,7 @@ function LeadDetail({ t, lang, id, back }) {
         <div style={{ flex: 1, minWidth: 'min(100%, 240px)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}><h1 style={{ margin: 0, fontFamily: 'var(--ss-font-display)', fontWeight: 500, fontSize: 'clamp(22px, 3vw, 30px)' }}>{name}</h1><DS.Tag color={st.color} variant="filled" size="md">{st[lang]}</DS.Tag></div>
           <div style={{ fontSize: 14, opacity: 0.75, marginTop: 6 }}><span dir="ltr">{l.phone}</span> · {l.project} · {l.channel} · {l.lang}</div>
-          <div style={{ fontSize: 13, opacity: 0.85, marginTop: 12, maxWidth: 720, lineHeight: 1.6 }}>{lang === 'ar' ? 'يرغب في شقة ٣ غرف للسكن العائلي، الميزانية ٨٠٠ ألف–١ مليون ريال، الشراء خلال شهرين بتمويل بنكي، وطلب زيارة الموقع. يفضل اتصال المستشار اليوم ٤–٦ مساءً.' : 'Wants a 3BR for family living, budget SAR 800k–1M, buying within 2 months via bank financing, asked to visit the site. Prefers advisor call today 4–6 pm.'}</div>
+          <div style={{ fontSize: 13, opacity: 0.85, marginTop: 12, maxWidth: 720, lineHeight: 1.6 }}>{AA_RG.lead.summary[lang]}</div>
         </div>
         <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}><DS.Button variant="pill" icon="phone">{lang === 'ar' ? 'اتصال الآن' : 'Call now'}</DS.Button><DS.Button variant="outline" icon="external-link" style={{ background: 'transparent', color: '#fff', borderColor: 'rgba(255,255,255,0.3)' }}>Odoo</DS.Button></div>
       </div>
@@ -106,7 +106,7 @@ function LeadDetail({ t, lang, id, back }) {
           <div style={{ fontSize: 12, color: 'var(--ss-gray-550)', marginTop: 10 }}>Template lead_qualified_followup · Utility · {lang === 'ar' ? 'ar' : 'en'}</div>
         </Panel>
         <Panel title={t.odooSync}>
-          {[['09:13:22', 'POST Zapier Z1 · catch hook', '200 · 310 ms'], ['09:13:31', 'Find partner by +966 phone', lang === 'ar' ? 'لا يوجد · إنشاء' : 'none · create'], ['09:13:41', 'crm.lead create · stage “AI Qualified”', (l.odoo || 'CRM-48214')], ['09:13:42', 'mail.activity · Call · advisor Rania', 'due 16:00']].map(([tm, a, r], i) => (
+          {[['09:13:22', 'POST Zapier Z1 · catch hook', '200 · 310 ms'], ['09:13:31', 'Find partner by ' + AA_RG.phonePrefix + ' phone', lang === 'ar' ? 'لا يوجد · إنشاء' : 'none · create'], ['09:13:41', 'crm.lead create · stage “AI Qualified”', (l.odoo || 'CRM-48214')], ['09:13:42', 'mail.activity · Call · advisor Rania', 'due 16:00']].map(([tm, a, r], i) => (
             <div key={i} style={{ display: 'grid', gridTemplateColumns: '64px minmax(0, 1fr) auto', gap: 12, alignItems: 'center', padding: '10px 0', borderBottom: i < 3 ? '1px solid var(--ss-gray-120)' : 'none', fontSize: 13 }}>
               <span style={{ color: 'var(--ss-gray-550)', fontVariantNumeric: 'tabular-nums' }}>{tm}</span><span style={{ color: 'var(--ss-ink)' }}>{a}</span><DS.Tag color="green">{r}</DS.Tag>
             </div>))}

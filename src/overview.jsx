@@ -62,7 +62,6 @@ function Overview({ t, lang, hero, go, openLead, project }) {
           </div>
           <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
             <DS.ButtonGroup items={ranges.map(r => r[1])} value={ranges.find(r => r[0] === range)[1]} onChange={v => setRange(ranges.find(r => r[1] === v)[0])} activeColor="var(--ss-teal-700)" style={{ background: '#fff' }} />
-            <DS.Button variant={dark ? 'pill' : 'primary'} icon="radio" onClick={() => go('live')}>{t.viewLive}</DS.Button>
           </div>
         </div>
         <div style={{ position: 'relative', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 150px), 1fr))', gap: 14, marginBottom: 16 }}>
@@ -96,7 +95,7 @@ function Overview({ t, lang, hero, go, openLead, project }) {
         <Panel title={t.lang}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 28, flexWrap: 'wrap' }}>
             <Donut data={[{ value: 62, color: 'var(--ss-teal-700)' }, { value: 30, color: 'var(--ss-purple-300)' }, { value: 8, color: 'var(--ss-lime-300)' }]} center={<><span style={{ fontSize: 22, fontWeight: 600 }}>{answered.toLocaleString()}</span><span style={{ fontSize: 11, color: 'var(--ss-gray-550)' }}>{t.funnelSteps[2]}</span></>} />
-            <div style={{ flex: 1, minWidth: 160 }}><Legend data={[{ label: lang === 'ar' ? 'العربية (سعودي)' : 'Arabic (Saudi)', value: 62, color: 'var(--ss-teal-700)' }, { label: lang === 'ar' ? 'الإنجليزية' : 'English', value: 30, color: 'var(--ss-purple-300)' }, { label: lang === 'ar' ? 'الفرنسية' : 'French', value: 8, color: 'var(--ss-lime-300)' }]} /></div>
+            <div style={{ flex: 1, minWidth: 160 }}><Legend data={[{ label: AA_RG.dialect[lang], value: 62, color: 'var(--ss-teal-700)' }, { label: lang === 'ar' ? 'الإنجليزية' : 'English', value: 30, color: 'var(--ss-purple-300)' }, { label: lang === 'ar' ? 'الفرنسية' : 'French', value: 8, color: 'var(--ss-lime-300)' }]} /></div>
           </div>
         </Panel>
       </div>
@@ -105,11 +104,11 @@ function Overview({ t, lang, hero, go, openLead, project }) {
         <Panel title={lang === 'ar' ? 'الجنسية' : 'Nationality'}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 28, flexWrap: 'wrap' }}>
             <Donut data={[{ value: 78, color: 'var(--ss-teal-700)' }, { value: 22, color: 'var(--ss-lime-300)' }]} center={<><span style={{ fontSize: 22, fontWeight: 600 }}>{answered.toLocaleString()}</span><span style={{ fontSize: 11, color: 'var(--ss-gray-550)' }}>{t.funnelSteps[2]}</span></>} />
-            <div style={{ flex: 1, minWidth: 160 }}><Legend data={[{ label: lang === 'ar' ? 'سعودي' : 'Saudi', value: 78, color: 'var(--ss-teal-700)' }, { label: lang === 'ar' ? 'غير سعودي' : 'Non-Saudi', value: 22, color: 'var(--ss-lime-300)' }]} /></div>
+            <div style={{ flex: 1, minWidth: 160 }}><Legend data={[{ label: AA_RG.local[lang], value: 78, color: 'var(--ss-teal-700)' }, { label: AA_RG.foreign[lang], value: 22, color: 'var(--ss-lime-300)' }]} /></div>
           </div>
         </Panel>
         <Panel title={lang === 'ar' ? 'نسبة التأهل حسب الجنسية' : 'Qualified rate by nationality'}>
-          {[[lang === 'ar' ? 'سعودي' : 'Saudi', 68, Math.round(answered * 0.78), 'var(--ss-teal-700)'], [lang === 'ar' ? 'غير سعودي' : 'Non-Saudi', 54, Math.round(answered * 0.22), 'var(--ss-lime-300)']].map(([l, q, cnt, c]) => (
+          {[[AA_RG.local[lang], 68, Math.round(answered * 0.78), 'var(--ss-teal-700)'], [AA_RG.foreign[lang], 54, Math.round(answered * 0.22), 'var(--ss-lime-300)']].map(([l, q, cnt, c]) => (
             <div key={l} style={{ padding: '10px 0' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, marginBottom: 8 }}><span style={{ color: 'var(--ss-ink)' }}>{l} <span style={{ color: 'var(--ss-gray-550)' }}>· {cnt.toLocaleString()} {lang === 'ar' ? 'مجيب' : 'answered'}</span></span><b style={{ fontWeight: 600 }}>{q}%</b></div>
               <div style={{ height: 10, borderRadius: 5, background: 'var(--ss-progress-track)' }}><div style={{ width: q + '%', height: '100%', borderRadius: 5, background: c }} /></div>

@@ -2,6 +2,8 @@
 
 Clickable demo of the SmartSpend AI Call Agent dashboard for Diar Developments (mock data).
 
+Two markets from one bundle: KSA at `/`, Egypt at `/egypt/` (the page sets `window.AA_REGION='eg'`; market-specific copy and data live in `src/region.jsx`).
+
 Screens: Overview, Live Calls, Inbound Calls, Leads Pipeline, Lead Detail, Call History, Insights, Qualification Signals, Source vs Quality, WhatsApp Setup.
 
 ## Run locally

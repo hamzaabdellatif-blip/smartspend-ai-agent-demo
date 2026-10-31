@@ -1,5 +1,5 @@
 const IN_RANGES = { today: 0.09, d7: 0.42, d30: 1, all: 4.8 };
-const IN_RECENT = [
+const IN_RECENT = AA_EG ? EG_IN_RECENT : [
   { id: 'C-88405', who: 'Inbound caller', ar: 'متصل وارد', project: 'Generic Agent', lang: 'AR', start: 'Oct 4, 08:55', dur: '1:12', reason: 'generic', outcome: 'generic', csat: 3.5 },
   { id: 'C-88371', who: 'Abdullah Al-Saud', ar: 'عبدالله آل سعود', project: 'Al-Narjis', lang: 'AR', start: 'Oct 3, 20:41', dur: '4:02', reason: 'project', outcome: 'qualified', csat: 4.8 },
   { id: 'C-88366', who: 'Majed Al-Harthi', ar: 'ماجد الحارثي', project: 'Diar AlHaram', lang: 'AR', start: 'Oct 3, 19:12', dur: '2:47', reason: 'visit', outcome: 'transferred', csat: 4.4 },

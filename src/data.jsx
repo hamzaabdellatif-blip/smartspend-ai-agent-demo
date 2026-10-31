@@ -38,7 +38,7 @@ const AA_STR = {
   },
 };
 
-const AA_PROJECTS = ['Diar AlHaram', 'Al-Narjis'];
+const AA_PROJECTS = AA_EG ? EG_PROJECTS : ['Diar AlHaram', 'Al-Narjis'];
 
 const AA_STATUSES = [
   { id: 'new', en: 'New', ar: 'جديد', color: 'gray' },
@@ -50,7 +50,7 @@ const AA_STATUSES = [
   { id: 'not_qualified', en: 'Not qualified', ar: 'غير مؤهل', color: 'gray' },
 ];
 
-const AA_LEADS = [
+const AA_LEADS = AA_EG ? EG_LEADS : [
   { id: 'L-20931', name: 'Ahmed Al-Qahtani', ar: 'أحمد القحطاني', phone: '+966 55 214 8830', project: 'Diar AlHaram', channel: 'Meta Lead Ads', lang: 'AR', status: 'qualified', score: 86, attempts: 1, unit: '3BR', when: '2m ago', odoo: 'CRM-48211' },
   { id: 'L-20930', name: 'Sara Al-Otaibi', ar: 'سارة العتيبي', phone: '+966 50 771 0921', project: 'Al-Narjis', channel: 'Google Ads', lang: 'EN', status: 'qualified', score: 74, attempts: 2, unit: 'Villa', when: '9m ago', odoo: 'CRM-48207' },
   { id: 'L-20929', name: 'Faisal Al-Harbi', ar: 'فيصل الحربي', phone: '+966 53 902 4417', project: 'Diar AlHaram', channel: 'Landing page (QR)', lang: 'AR', status: 'calling', score: null, attempts: 1, unit: '—', when: 'now' },
@@ -68,7 +68,7 @@ const AA_LEADS = [
 ];
 
 // Simulated live call — Faisal, Diar AlHaram (Arabic with English gloss)
-const AA_SCRIPT = [
+const AA_SCRIPT = AA_EG ? EG_SCRIPT : [
   { who: 'agent', ar: 'السلام عليكم أستاذ فيصل، معك المساعد الذكي من ديار. المكالمة مسجلة لضمان الجودة.', en: 'Hello Mr. Faisal, this is the Diar AI assistant. This call is recorded for quality.' },
   { who: 'lead', ar: 'وعليكم السلام، أهلاً.', en: 'Hello, hi.' },
   { who: 'agent', ar: 'سجلت معنا عن مشروع ديار الحرم من خلال رمز QR. هل الوقت مناسب لدقيقتين؟', en: 'You registered about Diar AlHaram via our QR code. Do you have two minutes?' },
@@ -97,7 +97,7 @@ const AA_RUBRIC = [
 // Not scored: if the lead agrees to a sales call, they go straight to sales whatever the score.
 const AA_OVERRIDE = { en: 'Permission for a sales call', ar: 'الإذن باتصال من المبيعات', tagEn: 'Overrides score', tagAr: 'يتجاوز التقييم', noteEn: 'Lead goes straight to sales, whatever the score', noteAr: 'يُحوَّل العميل للمبيعات مباشرة مهما كان التقييم' };
 
-const AA_LIVE = [
+const AA_LIVE = AA_EG ? EG_LIVE : [
   { name: 'Hana Al-Ghamdi', project: 'Al-Narjis', lang: 'AR', sec: 74, stage: 'Budget' },
   { name: 'Mark Ellison', project: 'Diar AlHaram', lang: 'EN', sec: 131, stage: 'Delivery date' },
   { name: 'Salem Al-Anazi', project: 'Diar AlHaram', lang: 'AR', sec: 12, stage: 'Greeting' },
@@ -106,12 +106,12 @@ const AA_LIVE = [
   { name: 'Inbound · IVR', project: 'Generic Agent', lang: 'AR', sec: 21, stage: 'Language select' },
 ];
 
-const AA_TICKER = [
+const AA_TICKER = AA_EG ? EG_TICKER : [
   ['Abdullah Al-Saud', 'qualified', 91, 'Al-Narjis'], ['Nora Al-Shehri', 'nurture', 52, 'Al-Narjis'], ['Omar Bakr', 'qualified', 68, 'Diar AlHaram'],
   ['Khalid Al-Dosari', 'call_back', null, 'Diar AlHaram'], ['Laila Mansour', 'unreachable', null, 'Al-Narjis'], ['Sara Al-Otaibi', 'qualified', 74, 'Al-Narjis'],
 ];
 
-const AA_CALLS = [
+const AA_CALLS = AA_EG ? EG_CALLS : [
   { id: 'C-88412', lead: 'Ahmed Al-Qahtani', dir: 'Outbound', project: 'Diar AlHaram', lang: 'AR', start: 'Oct 4, 09:12', dur: '3:08', outcome: 'qualified', csat: 4.5, attempt: '1/3' },
   { id: 'C-88409', lead: 'Sara Al-Otaibi', dir: 'Outbound', project: 'Al-Narjis', lang: 'EN', start: 'Oct 4, 09:03', dur: '2:41', outcome: 'qualified', csat: 4.0, attempt: '2/3' },
   { id: 'C-88405', lead: 'Inbound caller', dir: 'Inbound', project: 'Generic Agent', lang: 'AR', start: 'Oct 4, 08:55', dur: '1:12', outcome: 'generic', csat: 3.5, attempt: '—' },

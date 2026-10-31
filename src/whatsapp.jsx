@@ -23,8 +23,8 @@ const WA_TEMPLATES = [
     ar: 'تذكير: زيارتك لمشروع {{project}} {{visit_time}}. بانتظارك!' },
 ];
 const WA_DEFAULT = { qualified: 'lead_qualified_followup', unreachable: 'lead_unreachable_notice', call_back: 'lead_callback_confirm' };
-const WA_VARS = { name: 'Faisal', project: 'Diar AlHaram', callback_time: 'today 4–6 pm', visit_time: 'tomorrow at 5 pm' };
-const WA_VARS_AR = { name: 'فيصل', project: 'ديار الحرم', callback_time: 'اليوم بين ٤ و٦ مساءً', visit_time: 'غداً الساعة ٥ مساءً' };
+const WA_VARS = { name: AA_RG.live.name.en.split(' ')[0], project: AA_PROJECTS[0], callback_time: 'today 4–6 pm', visit_time: 'tomorrow at 5 pm' };
+const WA_VARS_AR = { name: AA_RG.live.name.ar.split(' ')[0], project: AA_RG.projectsAr[0], callback_time: 'اليوم بين ٤ و٦ مساءً', visit_time: 'غداً الساعة ٥ مساءً' };
 
 const WA_SITUATIONS = [
   { id: 'qualified', icon: 'circle-check', en: 'Sent right after a lead qualifies on the call.', ar: 'يُرسل فور تأهل العميل في المكالمة.' },

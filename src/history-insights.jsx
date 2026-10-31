@@ -58,8 +58,8 @@ function CallHistory({ t, lang, project }) {
 
 function Insights({ t, lang }) {
   const topics = lang === 'ar'
-    ? [['خطط السداد', 34], ['موعد التسليم', 27], ['الموقع والقرب من الحرم', 22], ['مساحة الوحدات', 18], ['رسوم الخدمات', 11], ['زيارة الموقع', 9]]
-    : [['Payment plans', 34], ['Handover date', 27], ['Location & distance to Haram', 22], ['Unit sizes', 18], ['Service charges', 11], ['Site visit', 9]];
+    ? [['خطط السداد', 34], ['موعد التسليم', 27], [AA_RG.topicLocation.ar, 22], ['مساحة الوحدات', 18], ['رسوم الخدمات', 11], ['زيارة الموقع', 9]]
+    : [['Payment plans', 34], ['Handover date', 27], [AA_RG.topicLocation.en, 22], ['Unit sizes', 18], ['Service charges', 11], ['Site visit', 9]];
   const objections = lang === 'ar' ? [['السعر أعلى من الميزانية', 41], ['ليس الوقت المناسب', 26], ['يقارن مع مطور آخر', 19], ['يحتاج استشارة العائلة', 14]] : [['Price above budget', 41], ['Not the right time', 26], ['Comparing other developers', 19], ['Needs to consult family', 14]];
   const channels = [{ label: 'Meta', a: 412, b: 168 }, { label: 'Google', a: 356, b: 171 }, { label: 'TikTok', a: 248, b: 64 }, { label: 'Snapchat', a: 162, b: 41 }, { label: 'QR', a: 131, b: 79 }, { label: 'Odoo ↻', a: 197, b: 87 }];
   const days = lang === 'ar' ? ['سبت', 'أحد', 'اثن', 'ثلا', 'أرب', 'خمي'] : ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu'];
@@ -74,7 +74,7 @@ function Insights({ t, lang }) {
         </Panel>
         <Panel title={lang === 'ar' ? 'أفضل أوقات الرد (نسبة الرد)' : 'Best time to call (answer rate)'}>
           <Heatmap rows={days} cols={hours} values={heat} />
-          <div style={{ fontSize: 12, color: 'var(--ss-gray-550)', marginTop: 12 }}>{lang === 'ar' ? 'النافذة: سبت–خميس ٠٩:٠٠–٢١:٠٠ بتوقيت السعودية · ذروة ١٧–١٩' : 'Window Sat–Thu 09:00–21:00 KSA · peak 17:00–19:00'}</div>
+          <div style={{ fontSize: 12, color: 'var(--ss-gray-550)', marginTop: 12 }}>{AA_RG.window[lang]}</div>
         </Panel>
         <Panel title={lang === 'ar' ? 'المواضيع الأكثر نقاشاً' : 'Topics discussed'}>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
@@ -87,7 +87,7 @@ function Insights({ t, lang }) {
           </div>
         </Panel>
         <Panel title={lang === 'ar' ? 'الأداء حسب المشروع' : 'Performance by project'}>
-          {[['Diar AlHaram', 884, 64, 3.8, 'Project Agent'], ['Al-Narjis', 622, 61, 3.6, 'Project Agent']].map(([p, n, q, cs, ag]) => (
+          {[[AA_PROJECTS[0], 884, 64, 3.8, 'Project Agent'], [AA_PROJECTS[1], 622, 61, 3.6, 'Project Agent']].map(([p, n, q, cs, ag]) => (
             <div key={p} style={{ display: 'grid', gridTemplateColumns: '1.4fr repeat(3, 1fr)', gap: 12, alignItems: 'center', padding: '12px 0', borderBottom: '1px solid var(--ss-gray-120)', fontSize: 13 }}>
               <div><div style={{ color: 'var(--ss-ink)', fontSize: 14 }}>{p}</div><div style={{ color: 'var(--ss-gray-550)', fontSize: 11 }}>{ag}</div></div>
               <div><div style={{ color: 'var(--ss-gray-550)', fontSize: 11 }}>{lang === 'ar' ? 'عملاء' : 'Leads'}</div>{n}</div>
