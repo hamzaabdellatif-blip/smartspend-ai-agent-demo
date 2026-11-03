@@ -3,11 +3,37 @@
   "buildCommand": "",
   "installCommand": "",
   "redirects": [
-    { "source": "/", "has": [{ "type": "header", "key": "sec-fetch-dest", "value": "document" }], "destination": "/smartspend/", "permanent": false },
-    { "source": "/egypt", "destination": "/smartspend/egypt/", "permanent": false },
-    { "source": "/egypt/", "destination": "/smartspend/egypt/", "permanent": false }
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "sec-fetch-dest",
+          "value": "document"
+        }
+      ],
+      "destination": "/smartspend/",
+      "permanent": false
+    },
+    {
+      "source": "/egypt",
+      "destination": "/smartspend/egypt/",
+      "permanent": false
+    },
+    {
+      "source": "/egypt/",
+      "destination": "/smartspend/egypt/",
+      "permanent": false
+    }
   ],
   "rewrites": [
-    { "source": "/(.*)", "destination": "https://ziila-ai.intella.me/$1" }
+    {
+      "source": "/ziila-env.js",
+      "destination": "https://ziila-ai.intella.me/env.js"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "https://ziila-ai.intella.me/$1"
+    }
   ]
 }
