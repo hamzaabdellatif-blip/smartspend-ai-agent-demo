@@ -6,6 +6,8 @@ Two markets from one bundle: KSA at `/smartspend/`, Egypt at `/smartspend/egypt/
 
 `/demo` embeds the Ziila app in a full-screen iframe. Every path that isn't one of our files is proxied to `https://ziila-ai.intella.me` by the rewrite in `vercel.json`, so Ziila runs on our own domain and its login cookies are first-party (a cross-site iframe would have them blocked). That's why our files live under `/smartspend/` and `/demo/`: Ziila uses `/assets/`, `/env.js` and routes like `/dashboard` at the root.
 
+To hide a Ziila asset, put a file at the same path under `public/` (ours wins over the proxy); `public/assets/images/logos/zilla-fullcolor-logo.svg` is a blank SVG for that reason, and `public/demo/index.html` injects CSS into the iframe to collapse its space.
+
 Screens: Overview, Live Calls, Inbound Calls, Leads Pipeline, Lead Detail, Call History, Insights, Qualification Signals, Source vs Quality, WhatsApp Setup.
 
 ## Run locally

@@ -16,5 +16,20 @@
     allow="clipboard-read; clipboard-write; microphone; camera; fullscreen"
     allowfullscreen
     referrerpolicy="no-referrer"></iframe>
+  <script>
+    // The iframe is same-origin (Ziila is proxied through our domain), so we can style it.
+    // public/assets/images/logos/zilla-fullcolor-logo.svg already blanks the image; this collapses its space.
+    var frame = document.querySelector('iframe');
+    frame.addEventListener('load', function () {
+      try {
+        var doc = frame.contentDocument;
+        if (doc.getElementById('ss-overrides')) return;
+        var style = doc.createElement('style');
+        style.id = 'ss-overrides';
+        style.textContent = 'img[src*="/logos/zilla-fullcolor-logo.svg"]{display:none!important}';
+        doc.head.appendChild(style);
+      } catch (e) {}
+    });
+  </script>
 </body>
 </html>
