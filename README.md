@@ -4,6 +4,8 @@ Clickable demo of the SmartSpend AI Call Agent dashboard for Diar Developments (
 
 Two markets from one bundle: KSA at `/`, Egypt at `/egypt/` (the page sets `window.AA_REGION='eg'`; market-specific copy and data live in `src/region.jsx`).
 
+`/demo` is a standalone page that embeds the Ziila login app (`https://ziila.intella.me/en/auth/login`) in a full-screen iframe, so it runs under our domain (`ai.smartspend.net/demo`).
+
 Screens: Overview, Live Calls, Inbound Calls, Leads Pipeline, Lead Detail, Call History, Insights, Qualification Signals, Source vs Quality, WhatsApp Setup.
 
 ## Run locally
