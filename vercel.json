@@ -8,6 +8,6 @@
     { "source": "/egypt/", "destination": "/smartspend/egypt/", "permanent": false }
   ],
   "rewrites": [
-    { "source": "/(.*)", "destination": "https://ziila.intella.me/$1" }
+    { "source": "/(.*)", "destination": "https://ziila-ai.intella.me/$1" }
   ]
 }
