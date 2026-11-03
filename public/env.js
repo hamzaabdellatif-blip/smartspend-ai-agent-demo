@@ -1,12 +1,15 @@
 // Served in place of Ziila's /env.js, which every Ziila page loads first (our static files win over the proxy).
-// Pulls in Ziila's real config, then rebrands the UI: hides Ziila logos, removes "Ziila" from copy,
-// and shows "Xlab Group" instead of intella.
+// Pulls in Ziila's real config, then rebrands the UI: removes "Ziila" from copy and resizes the logos,
+// which public/assets/images/logos/ swaps for ours: the SmartSpend wordmark for Ziila's logos (sized for a square
+// mark) and the Xlab Group logo, recoloured navy, for the intella "Powered By" logo.
 document.write('<script src="/ziila-env.js"><\/script>');
 
 (function () {
   var css =
-    'img[src*="/logos/zilla-fullcolor-logo.svg"],img[src*="/logos/zilla-logo.svg"],img[src*="/logos/intella-logo.svg"]{display:none!important}' +
-    '.ss-brand{font-size:13px;font-weight:600;color:#2E5E6B}';
+    'img[src*="/illustrations/zilla-avatar.svg"]{display:none!important}' +
+    'img[src*="/logos/zilla-logo.svg"]{width:auto!important;height:26px!important;margin-bottom:24px}' +
+    'img[src*="/logos/zilla-fullcolor-logo.svg"]{width:auto!important;height:26px!important;margin-bottom:8px}' +
+    'img[src*="/logos/intella-logo.svg"]{width:auto!important;height:24px!important;margin-inline-start:4px}';
 
   // Specific sentences first so they still read naturally, then a catch-all for anything else.
   var TEXT = [
@@ -31,15 +34,6 @@ document.write('<script src="/ziila-env.js"><\/script>');
     if (root.nodeType !== 1) return;
     var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
     while (walker.nextNode()) fixText(walker.currentNode);
-    var logos = root.querySelectorAll ? root.querySelectorAll('img[src*="/logos/intella-logo.svg"]') : [];
-    for (var j = 0; j < logos.length; j++) {
-      var img = logos[j];
-      if (img.nextSibling && img.nextSibling.className === 'ss-brand') continue;
-      var span = document.createElement('span');
-      span.className = 'ss-brand';
-      span.textContent = 'Xlab Group';
-      img.parentNode.insertBefore(span, img.nextSibling);
-    }
   }
 
   var style = document.createElement('style');

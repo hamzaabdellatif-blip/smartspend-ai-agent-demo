@@ -6,7 +6,7 @@ Two markets from one bundle: KSA at `/smartspend/`, Egypt at `/smartspend/egypt/
 
 `/demo` embeds the Ziila app in a full-screen iframe. Every path that isn't one of our files is proxied to `https://ziila-ai.intella.me` by the rewrite in `vercel.json`, so Ziila runs on our own domain and its login cookies are first-party (a cross-site iframe would have them blocked). That's why our files live under `/smartspend/` and `/demo/`: Ziila uses `/assets/`, `/env.js` and routes like `/dashboard` at the root.
 
-Rebranding: a file under `public/` wins over the proxy at the same path. `public/assets/images/logos/` holds blank SVGs for Ziila's logos, and `public/env.js` replaces Ziila's `/env.js` (which every Ziila page loads first): it loads Ziila's real config via the `/ziila-env.js` rewrite, then hides the logos, rewrites "Ziila" in the copy (English and Arabic) and shows "Xlab Group" instead of intella. Add new text replacements to the `TEXT` list there.
+Rebranding: a file under `public/` wins over the proxy at the same path. `public/assets/images/logos/` replaces Ziila's logos with the SmartSpend wordmark (white on the login panel, navy elsewhere) and the intella "Powered By" logo with the Xlab Group logo (recoloured navy, embedded as a PNG in the SVG). `public/env.js` replaces Ziila's `/env.js` (which every Ziila page loads first): it loads Ziila's real config via the `/ziila-env.js` rewrite, then hides the logos, sizes the SmartSpend logo and rewrites "Ziila" in the copy (English and Arabic). Add new text replacements to the `TEXT` list there.
 
 Screens: Overview, Live Calls, Inbound Calls, Leads Pipeline, Lead Detail, Call History, Insights, Qualification Signals, Source vs Quality, WhatsApp Setup.
 
