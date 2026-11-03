@@ -1,4 +1,4 @@
-// Market localisation. The page sets window.AA_REGION before app.js loads: unset = KSA (/), 'eg' = Egypt (/egypt/).
+// Market localisation. The page sets window.AA_REGION before app.js loads: unset = KSA (/smartspend/), 'eg' = Egypt (/smartspend/egypt/).
 const AA_EG = window.AA_REGION === 'eg';
 
 // Inline copy that differs per market, keyed by language where it is shown in both.
